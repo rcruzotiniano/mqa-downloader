@@ -19,7 +19,6 @@ import requests
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 from subprocess import Popen, PIPE
-
 from config.settings import TOKEN, MOBILE_TOKEN, TV_TOKEN, TV_SECRET, WEB_TOKEN, SHOWAUTH
 
 technical_names = {

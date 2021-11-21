@@ -5,60 +5,19 @@ import sys
 import os
 import re
 import urllib3
-
 import redsea.cli as cli
 
 from redsea.mediadownloader import MediaDownloader
 from redsea.tagger import Tagger
 from redsea.tidal_api import TidalApi, TidalError
 from redsea.sessions import RedseaSessionFile
-
 from config.settings import PRESETS, BRUTEFORCEREGION
 
 
-LOGO = """                                                 
-                  `.:+osyyhhhyyso/:.                                                                                            
-              `:ohmNNNNNNNNNNNNNNNNNdy+-                                                                                        
-           `/ymNNNNNNNNNNNNNNNNNNNNNNNNNdo-                                                                                     
-         .omNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh/`                                                                                  
-       `omNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh:                                                                                 
-      -dNNNNNNNNNNNNNNNNNNNNNNNNNms/+hNNNNNNNNms`                                                                               
-     +mNNNNNNNNNNNNNNNNNNNNNNNNNm:`:.`yNNNNNNNNNh-                                                                              
-    +mNNNNNNNNNNNmdmNNNNNNNNNNNN+ :mh``dNNNNNNNNNd-                                                                             
-   :mNNNNNNNNNNd/..-yNNNNNNNNNNd``hNN/ /NNNNNNNNNNh`                                                                            
-  `dNNNNNNNNNNd- oh.`yNNNNNNNNN/ /NNNh `dNNNNNNNNNNo                                                                            
-  +NNNNNNNNNNm: +NNh`.dNNNNNNNd``dNNNN- oNNNNNNNNNNm.                                                                           
-  hNNNNNNNNNNs -mNNN+ /NNNNNNNo :NNNNNs .mNNNNNNNNNN/                                                                           
- `dNNNNmmmmmd. smmmmd``hmmmmmm. ymmmmmd` ymmmmmNNNNNo                                                                           
- `dNNNN/----.  ------` .------  -------` .----:mNNNNs                                                                           
-  hNNNN+ -so``osssssso` /ssss` +ssssssso` os- /NNNNN+                                                                           
-  oNNNNd``hs /NNNNNNNN+ :NNNy .mNNNNNNNN/ od``dNNNNm-                                                                           
-  .mNNNNy```:mNNNNNNNNm. yNN- oNNNNNNNNNm:`.`yNNNNNy                                                                            
-   +NNNNNmhhNNNNNNNNNNNy`.ds -mNNNNNNNNNNNhhmNNNNNm.                                                                            
-   `yNNNNNNNNNNNNNNNNNNNy.` -dNNNNNNNNNNNNNNNNNNNm/                                                                             
-    `sNNNNNNNNNNNNNNNNNNNmhdNNNNNNNNNNNNNNNNNNNNm/                                                                              
-      +mNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd-                                                                               
-       -hNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmo`                                                                                
-        `:hNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNms.                                                                                  
-          `-sdNNNNNNNNNNNNNNNNNNNNNNNNNNmh+.                                                                                    
-             `:ohmNNNNNNNNNNNNNNNNNNmdy+-`                                                                                      
-                `.:++adrianmejiam++/:.                                                                                          
-                      ``.......``                                                                                               
-                                                                                                                                                                                                        
-    `          `        `....`              `                                                                                  
-   -h.        oo     .+yddddddy+.          `ho                                                                                 
-   oNh`      +mm`  `+dms/-..-:sdmo`       `sNm:                                                                                
-  `dNNy`    /mNN:  sNh-        .hNy       +Ndmm.                                                                               
-  :NmdNs`  /mmmNy .mm-          .mN-     :mm-+Nh`                                                                              
-  sNh.dNs :mm//Nm`-Nm.          `mN:    .dm/  yNy                                                                              
- `mN+ .mNymN+ .mN/ hNy`        `sNh`   `hNo   `dN+                                                                             
- /Nm.  -mNNo   yNh `yNd+.    ./hNh.    sNmo++++yNm:                                                                            
- yNh    :ms    /NN.  -sdNmddmNNNNddd+ +NmyssssssyNm.                                                                           
- :/.     -`    `//.    `.:://///////. :/.        :/.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                                               
-\n"""
+LOGO = "MQA DOWNLOADER"
 
 MEDIA_TYPES = {'t': 'track', 'p': 'playlist', 'a': 'album', 'r': 'artist', 'v': 'video'}
+
 
 def main():
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -492,7 +451,7 @@ def main():
                 name = md.playlist_from_id(mt['id'])['title']
             else:
                 name = track_info[0][1]['title']
-                
+
             print('<<< Downloading {0} "{1}": {2} track(s) in total >>>'.format(
                 MEDIA_TYPES[mt['type']] + (' ' + media_name if media_name else ''), name, total))
 
