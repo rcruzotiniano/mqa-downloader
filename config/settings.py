@@ -71,7 +71,8 @@ TV_SECRET = "eVWBEkuL2FCjxgjOkR3yK0RYZEbcrMXRc2l8fU3ZCdE="
 # Web token for hidden web login (do not use!)
 WEB_TOKEN = "CzET4vdadNUFQ5JU"
 
-path = "/data/data/com.termux/files/home/storage/music"
+# path = "/data/data/com.termux/files/home/storage/music"
+path = "E:\MQA"
 
 PRESETS = {
 
@@ -90,8 +91,8 @@ PRESETS = {
         "convert_to_alac": False,
         "save_credits_txt": False,
         "embed_credits": True,
-        "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "save_lyrics_lrc": True,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
@@ -104,7 +105,7 @@ PRESETS = {
 
     # This will download the highest available quality including MQA
     "best_available": {
-        "keep_cover_jpg": False,
+        "keep_cover_jpg": True,
         "embed_album_art": True,
         "save_album_json": False,
         "aggressive_remix_filtering": True,
@@ -117,11 +118,11 @@ PRESETS = {
         "album_format": "{albumartist} - {album}{quality}{explicit}",
         "video_folder_format": "{artist} - {title}{quality}",
         "video_file_format": "{title}",
-        "convert_to_alac": True,
+        "convert_to_alac": False,
         "save_credits_txt": False,
         "embed_credits": True,
-        "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "save_lyrics_lrc": True,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
@@ -147,8 +148,8 @@ PRESETS = {
         "convert_to_alac": False,
         "save_credits_txt": False,
         "embed_credits": True,
-        "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "save_lyrics_lrc": True,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": False,
@@ -174,8 +175,8 @@ PRESETS = {
         "convert_to_alac": False,
         "save_credits_txt": False,
         "embed_credits": True,
-        "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "save_lyrics_lrc": True,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
