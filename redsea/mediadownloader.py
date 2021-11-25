@@ -345,7 +345,7 @@ class MediaDownloader(object):
                 # Add 2?
                 length = int(pattern.findall(manifest)[0]) + 3
 
-                # Download all chunk files from MPD
+                #  all chunk files from MPD
                 with open(album_location + '/encrypted.mp4', 'wb') as encrypted_file:
                     for i in range(length):
                         link = playback_link.replace("$Number$", str(i))
@@ -391,58 +391,58 @@ class MediaDownloader(object):
 
                 aa_location = path.join(album_location, 'Cover.jpg')
                 if not path.isfile(aa_location):
-                    try:
-                        artwork_size = 1200
-                        if 'artwork_size' in self.opts:
-                            if self.opts['artwork_size'] == 0:
-                                raise Exception
-                            artwork_size = self.opts['artwork_size']
-
-                        print('\tDownloading album art from iTunes...')
-                        s = requests.Session()
-
-                        params = {
-                            'country': 'US',
-                            'entity': 'album',
-                            'term': track_info['artist']['name'] + ' ' + track_info['album']['title']
-                        }
-
-                        r = s.get('https://itunes.apple.com/search', params=params)
-                        r = r.json()
-                        album_cover = None
-
-                        for i in range(len(r['results'])):
-                            if album_info['title'] == r['results'][i]['collectionName']:
-                                # Get high resolution album cover
-                                album_cover = r['results'][i]['artworkUrl100']
-                                break
-
-                        if album_cover is None:
-                            raise Exception
-
-                        compressed = 'bb'
-                        if 'uncompressed_artwork' in self.opts:
-                            if self.opts['uncompressed_artwork']:
-                                compressed = '-999'
-                        album_cover = album_cover.replace('100x100bb.jpg',
-                                                          '{}x{}{}.jpg'.format(artwork_size, artwork_size, compressed))
-                        self._dl_url(album_cover, aa_location)
-
-                        if ftype == 'flac':
-                            # Open cover.jpg to check size
-                            with open(aa_location, 'rb') as f:
-                                data = f.read()
-
-                            # Check if cover is smaller than 16MB
-                            max_size = 16777215
-                            if len(data) > max_size:
-                                print('\tCover file size is too large, only {0:.2f}MB are allowed.'.format(
-                                    max_size / 1024 ** 2))
-                                print('\tFallback to compressed iTunes cover')
-
-                                album_cover = album_cover.replace('-999', 'bb')
-                                self._dl_url(album_cover, aa_location)
-                    except:
+                    # try:
+                    #     artwork_size = 1200
+                    #     if 'artwork_size' in self.opts:
+                    #         if self.opts['artwork_size'] == 0:
+                    #             raise Exception
+                    #         artwork_size = self.opts['artwork_size']
+                    #
+                    #     print('\tDownloading album art from iTunes...')
+                    #     s = requests.Session()
+                    #
+                    #     params = {
+                    #         'country': 'US',
+                    #         'entity': 'album',
+                    #         'term': track_info['artist']['name'] + ' ' + track_info['album']['title']
+                    #     }
+                    #
+                    #     r = s.get('https://itunes.apple.com/search', params=params)
+                    #     r = r.json()
+                    #     album_cover = None
+                    #
+                    #     for i in range(len(r['results'])):
+                    #         if album_info['title'] == r['results'][i]['collectionName']:
+                    #             # Get high resolution album cover
+                    #             album_cover = r['results'][i]['artworkUrl100']
+                    #             break
+                    #
+                    #     if album_cover is None:
+                    #         raise Exception
+                    #
+                    #     compressed = 'bb'
+                    #     if 'uncompressed_artwork' in self.opts:
+                    #         if self.opts['uncompressed_artwork']:
+                    #             compressed = '-999'
+                    #     album_cover = album_cover.replace('100x100bb.jpg',
+                    #                                       '{}x{}{}.jpg'.format(artwork_size, artwork_size, compressed))
+                    #     self._dl_url(album_cover, aa_location)
+                    #
+                    #     if ftype == 'flac':
+                    #         # Open cover.jpg to check size
+                    #         with open(aa_location, 'rb') as f:
+                    #             data = f.read()
+                    #
+                    #         # Check if cover is smaller than 16MB
+                    #         max_size = 16777215
+                    #         if len(data) > max_size:
+                    #             print('\tCover file size is too large, only {0:.2f}MB are allowed.'.format(
+                    #                 max_size / 1024 ** 2))
+                    #             print('\tFallback to compressed iTunes cover')
+                    #
+                    #             album_cover = album_cover.replace('-999', 'bb')
+                    #             self._dl_url(album_cover, aa_location)
+                    # except:
                         print('\tDownloading album art from Tidal...')
                         if not self._dl_picture(track_info['album']['cover'], aa_location):
                             aa_location = None
