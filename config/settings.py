@@ -72,6 +72,7 @@ TV_SECRET = "eVWBEkuL2FCjxgjOkR3yK0RYZEbcrMXRc2l8fU3ZCdE="
 WEB_TOKEN = "CzET4vdadNUFQ5JU"
 
 path = "/data/data/com.termux/files/home/storage/music"
+# path = "E:\MQA"
 
 PRESETS = {
 
@@ -91,7 +92,7 @@ PRESETS = {
         "save_credits_txt": False,
         "embed_credits": True,
         "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
@@ -121,7 +122,7 @@ PRESETS = {
         "save_credits_txt": False,
         "embed_credits": True,
         "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
@@ -148,7 +149,7 @@ PRESETS = {
         "save_credits_txt": False,
         "embed_credits": True,
         "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": False,
@@ -175,7 +176,7 @@ PRESETS = {
         "save_credits_txt": False,
         "embed_credits": True,
         "save_lyrics_lrc": False,
-        "embed_lyrics": False,
+        "embed_lyrics": True,
         "genre_language": "en-US",
         "artwork_size": 1200,
         "uncompressed_artwork": True,
